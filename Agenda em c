@@ -1,0 +1,254 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+
+#define MAX_EVENTOS 100
+
+typedef struct{
+    char evento[100];
+    int dia, mes, ano;
+    char descricao[200];
+    int ativo;
+}Agenda;
+
+void salvar(Agenda *e[], int quant){
+    FILE *file = fopen("agenda.txt", "w");
+    if (!file) {
+        printf("Erro ao abrir arquivo para salvar.\n");
+        return;
+    }
+
+    fprintf(file, "%d\n", quant);
+
+    for (int i = 0; i < quant; i++) {
+        if (e[i] && e[i]->ativo == 1) {
+            fprintf(file, "%s\n", e[i]->evento);
+            fprintf(file, "%s\n", e[i]->descricao);
+            fprintf(file, "%d %d %d\n", e[i]->dia, e[i]->mes, e[i]->ano);
+        }
+    }
+
+    fclose(file);
+
+
+}
+void imprimir(Agenda *e[], int quant){
+
+    printf("\n\t\tLista de Eventos: \n");
+    printf("\t---------------------------------------------------------------------------\n");
+
+    for(int i = 0; i < quant; i++){
+        printf("\tID: %d = Data: %02d/%02d/%04d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano, e[i]->evento,e[i]->descricao);
+        printf("\t--------------------------------------------------------------------------\n");
+    }
+
+}
+
+int cadastrar_eventos(Agenda *e[], int quant){
+
+    if(quant >= MAX_EVENTOS){
+        printf("Limite máximo atingido!\n");
+        return quant;
+    }
+        Agenda *novo = malloc(sizeof(Agenda));
+        if(!novo){
+            return quant;
+        }
+            getchar();
+            printf("\nDigite o nome do evento: ");
+            fgets(novo->evento,sizeof(novo->evento),stdin);
+            novo->evento[strcspn(novo->evento, "\n")] = '\0';
+
+            printf("\nDigite a descrição do evento: ");
+            fgets(novo->descricao,sizeof(novo->descricao),stdin);
+            novo->descricao[strcspn(novo->descricao, "\n")] = '\0';
+
+
+            printf("\nDigite a data do evento (dd mm aaaa): ");
+            scanf("%d%d%d",&novo->dia,&novo->mes,&novo->ano);
+            getchar();
+
+             novo->ativo = 1;
+            e[quant] = novo;
+            quant++;
+
+            salvar(e, quant);
+        return quant;
+
+}
+void alterar_evento(Agenda *e[], int quant){
+    int id,editar;
+
+    imprimir(e,quant);
+
+    printf("\n\tDigite o codigo do evento que deseja alterar: \n");
+    scanf("%d", &id);
+    getchar();
+    id--;
+
+    if(id< 0|| id >= quant || !e[id] || e[id]->ativo== 0){
+        printf("Id inválido!!\n");
+        return;
+    }
+
+    if(id >= 0 && id <quant){
+        printf("\n\t--- Alteração de evento %d ---\n", id + 1);
+        printf("\n\tO que deseja alterar?\n\t1-Nome\n\t2-Descrição\n\t3-Data\n\t4-Todos\nDigite o número que deseja: ");
+        scanf("%d", &editar);
+        getchar();
+      switch(editar){
+            case 1:
+                printf("\nNovo nome do evento: ");
+                fgets(e[id]->evento,sizeof(e[id]->evento), stdin);
+                e[id]->evento[strcspn(e[id]->evento,"\n")] = '\0';
+            break;
+            case 2:
+                printf("\nNova descrição: ");
+                fgets(e[id]->descricao,sizeof(e[id]->descricao), stdin);
+                e[id]->descricao[strcspn(e[id]->descricao,"\n")] = '\0';
+            break;
+            case 3:
+                printf("\nNova data (dd/mm/aaaa): ");
+                scanf("%d%d%d",&e[id]->dia,&e[id]->mes,&e[id]->ano);
+            break;
+            case 4:
+                printf("\nNovo nome do evento: ");
+                fgets(e[id]->evento,sizeof(e[id]->evento), stdin);
+                e[id]->evento[strcspn(e[id]->evento,"\n")] = '\0';
+
+                printf("\nNova descrição: ");
+                fgets(e[id]->descricao,sizeof(e[id]->descricao), stdin);
+                e[id]->descricao[strcspn(e[id]->descricao,"\n")] = '\0';
+
+                printf("\nNova data (dd/mm/aaaa): ");
+                scanf("%d%d%d",&e[id]->dia,&e[id]->mes,&e[id]->ano);
+            break;
+      }
+      system("cls");
+
+
+    }
+    else{
+        printf("\n\tCódigo invalido!\n");
+        return;
+    }
+    salvar(e, quant);
+    printf("Evento atualizado!\n");
+}
+
+
+
+int ler_arquivo(Agenda *e[]){
+    FILE *file = fopen("agenda.txt", "r");
+
+    if(!file){
+        return 0;
+    }
+        int quant;
+        fscanf(file,"%d\n", &quant);
+        for(int i=0; i<quant; i++){
+            Agenda *novo = malloc(sizeof(Agenda));
+            if(!novo) break;
+
+            fgets(novo->evento, sizeof(novo->evento), file);
+            novo->evento[strcspn(novo->evento, "\n")] = '\0';
+
+            fgets(novo->descricao, sizeof(novo->descricao), file);
+            novo->descricao[strcspn(novo->descricao, "\n")] = '\0';
+
+            fscanf(file, "%2d %2d %4d\n", &novo->dia, &novo->mes, &novo->ano);
+
+            novo->ativo = 1;
+            e[i] = novo;
+
+
+
+        }
+        fclose(file);
+
+
+
+    return quant;
+}
+
+int excluir_evento(Agenda *e[], int quant){
+    int id;
+
+    imprimir(e,quant);
+
+    printf("\n\tDigite o codigo do evento que deseja excluir: \n");
+    scanf("%d", &id);
+    getchar();
+    id--;
+
+     if (id < 0 || id >= quant || !e[id] || e[id]->ativo == 0) {
+        printf("ID inválido!\n");
+        return quant;
+    }
+
+    free(e[id]);
+    for(int i = id; i <quant - 1; i++){
+        e[i] = e[i + 1];
+    }
+    e[quant -1] = NULL;
+    quant--;
+      if (quant > 0) {
+        salvar(e, quant);
+    } else {
+
+        FILE *f = fopen("agenda.txt", "w");
+        if (f) {
+            fprintf(f, "0\n");
+            fclose(f);
+        }
+    }
+
+    printf("Evento excluído com sucesso!\n");
+    return quant;
+}
+int main()
+{
+    setlocale(LC_ALL, "Portuguese");
+    Agenda *eventos[MAX_EVENTOS] ={0};
+    int opcao, quant = ler_arquivo(eventos);
+
+    do{
+        printf("\n\t1 - Cadastrar\n\t2 - Alterar\n\t3 - Listar Eventos\n\t4 - Excluir\n\t0 - Sair\n\tDigite o número no menu que deseja: ");
+        scanf("%d", &opcao);
+
+        switch(opcao){
+            case 0:
+                system("cls");
+                printf("\nSaindo do programa...\n");
+            break;
+            case 1:
+                system("cls");
+                quant = cadastrar_eventos(eventos, quant);
+            break;
+            case 2:
+                system("cls");
+                alterar_evento(eventos, quant);
+            break;
+            case 3:
+                system("cls");
+                imprimir(eventos, quant);
+
+            break;
+            case 4:
+                system("cls");
+                quant = excluir_evento(eventos, quant);
+            break;
+
+            default:
+                system("cls");
+                printf("\n\tCódigo inválido, digite novamente!!!\n");
+
+        }
+    }while(opcao != 0);
+
+    salvar(eventos, quant);
+
+
+    return 0;
+}
