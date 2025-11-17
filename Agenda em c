@@ -215,8 +215,8 @@ int main()
 
     do{
         printf("\n\t1 - Cadastrar\n\t2 - Alterar\n\t3 - Listar Eventos\n\t4 - Excluir\n\t0 - Sair\n\tDigite o número no menu que deseja: ");
-        erro = scanf("%d", &opcao);  
-        getchar();
+        erro = scanf("%d", &opcao);
+
 
         switch(opcao){
             case 0:
@@ -225,6 +225,7 @@ int main()
             break;
             case 1:
                 system("cls");
+
                 quant = cadastrar_eventos(eventos, quant);
             break;
             case 2:
@@ -243,7 +244,7 @@ int main()
 
             default:
                 system("cls");
-
+                    getchar();
                     printf("\n\tCódigo inválido, digite novamente!!!\n");
 
 
