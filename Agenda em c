@@ -211,11 +211,12 @@ int main()
 {
     setlocale(LC_ALL, "Portuguese");
     Agenda *eventos[MAX_EVENTOS] ={0};
-    int opcao, quant = ler_arquivo(eventos);
+    int opcao, quant = ler_arquivo(eventos),erro;
 
     do{
         printf("\n\t1 - Cadastrar\n\t2 - Alterar\n\t3 - Listar Eventos\n\t4 - Excluir\n\t0 - Sair\n\tDigite o número no menu que deseja: ");
-        scanf("%d", &opcao);
+        erro = scanf("%d", &opcao);  
+        getchar();
 
         switch(opcao){
             case 0:
@@ -242,10 +243,12 @@ int main()
 
             default:
                 system("cls");
-                printf("\n\tCódigo inválido, digite novamente!!!\n");
+
+                    printf("\n\tCódigo inválido, digite novamente!!!\n");
+
 
         }
-    }while(opcao != 0);
+    }while((erro != 1)||opcao != 0);
 
     salvar(eventos, quant);
 
