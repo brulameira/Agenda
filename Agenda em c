@@ -69,6 +69,36 @@ int cadastrar_eventos(Agenda *e[], int quant){
             scanf("%d%d%d",&novo->dia,&novo->mes,&novo->ano);
             getchar();
 
+            while(novo->mes < 1 || novo->mes > 12){
+                printf("\nMes errado, por favor, digite o mes correta: ");
+                scanf("%d",&novo->mes);
+                getchar();
+            }
+            if( novo->mes == 1 || novo->mes == 3 || novo->mes == 5 || novo->mes == 7 || novo->mes == 8 || novo->mes == 11 || novo->mes == 12 ){
+                    while( novo->dia < 1 || novo->dia > 31){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&novo->dia);
+                        getchar();
+                    }
+                }else if( novo->mes == 4 || novo->mes == 6 || novo->mes == 9 || novo->mes == 11){
+                    while( novo->dia < 1 || novo->dia > 30){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&novo->dia);
+                        getchar();
+                    }
+                }else{
+                    while( novo->dia < 1 || novo->dia > 29){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&novo->dia);
+                        getchar();
+                    }
+                }
+                while(novo->ano < 1000 || novo->ano > 9999){
+                    printf("\nAno errado, por favor, digite o ano correta: ");
+                    scanf("%d",&novo->ano);
+                    getchar();
+                }
+
              novo->ativo = 1;
             e[quant] = novo;
             quant++;
@@ -111,6 +141,37 @@ void alterar_evento(Agenda *e[], int quant){
             case 3:
                 printf("\nNova data (dd/mm/aaaa): ");
                 scanf("%d%d%d",&e[id]->dia,&e[id]->mes,&e[id]->ano);
+
+            while(e[id]->mes < 1 || e[id]->mes > 12){
+                printf("\nMes errado, por favor, digite o mes correta: ");
+                scanf("%d",&e[id]->mes);
+                getchar();
+            }
+            if( e[id]->mes == 1 || e[id]->mes == 3 || e[id]->mes == 5 || e[id]->mes == 7 || e[id]->mes == 8 || e[id]->mes == 11 || e[id]->mes == 12 ){
+                    while( e[id]->dia < 1 || e[id]->dia > 31){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&e[id]->dia);
+                        getchar();
+                    }
+                }else if( e[id]->mes == 4 || e[id]->mes == 6 || e[id]->mes == 9 || e[id]->mes == 11){
+                    while( e[id]->dia < 1 || e[id]->dia > 30){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&e[id]->dia);
+                        getchar();
+                    }
+                }else{
+                    while( e[id]->dia < 1 || e[id]->dia > 29){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&e[id]->dia);
+                        getchar();
+                    }
+                }
+                while(e[id]->ano < 1000 || e[id]->ano > 9999){
+                    printf("\nAno errado, por favor, digite o ano correta: ");
+                    scanf("%d",&e[id]->ano);
+                    getchar();
+                }
+
             break;
             case 4:
                 printf("\nNovo nome do evento: ");
@@ -123,6 +184,36 @@ void alterar_evento(Agenda *e[], int quant){
 
                 printf("\nNova data (dd/mm/aaaa): ");
                 scanf("%d%d%d",&e[id]->dia,&e[id]->mes,&e[id]->ano);
+
+                while(e[id]->mes < 1 || e[id]->mes > 12){
+                    printf("\nMes errado, por favor, digite o mes correta: ");
+                    scanf("%d",&e[id]->mes);
+                    getchar();
+            }
+            if( e[id]->mes == 1 || e[id]->mes == 3 || e[id]->mes == 5 || e[id]->mes == 7 || e[id]->mes == 8 || e[id]->mes == 11 || e[id]->mes == 12 ){
+                    while( e[id]->dia < 1 || e[id]->dia > 31){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&e[id]->dia);
+                        getchar();
+                    }
+                }else if( e[id]->mes == 4 || e[id]->mes == 6 || e[id]->mes == 9 || e[id]->mes == 11){
+                    while( e[id]->dia < 1 || e[id]->dia > 30){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&e[id]->dia);
+                        getchar();
+                    }
+                }else{
+                    while( e[id]->dia < 1 || e[id]->dia > 29){
+                        printf("\nData errada, por favor, digite a data correta: ");
+                        scanf("%d",&e[id]->dia);
+                        getchar();
+                    }
+                }
+                while(e[id]->ano < 1000 || e[id]->ano > 9999){
+                    printf("\nAno errado, por favor, digite o ano correta: ");
+                    scanf("%d",&e[id]->ano);
+                    getchar();
+                }
             break;
       }
       system("cls");
