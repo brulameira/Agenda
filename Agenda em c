@@ -7,7 +7,7 @@
 
 typedef struct{
     char evento[100];
-    int dia, mes, ano;
+    int dia, mes, ano, hora, minuto;
     char descricao[200];
     int ativo;
 }Agenda;
@@ -99,6 +99,21 @@ int cadastrar_eventos(Agenda *e[], int quant){
                     getchar();
                 }
 
+                printf("\nDigite o horario do evento (00:00): ");
+                scanf("%d%d",&novo->hora,&novo->minuto);
+                getchar();
+
+                while(novo->hora < 0 || novo->hora > 23){
+                    printf("\nHorario inválido!! Digite o horario do evento (hh:00): ");
+                    scanf("%d",&novo->hora);
+                    getchar();
+                }
+                while(novo->minuto < 0 || novo->minuto > 59){
+                    printf("\nMinuto inválido!! Digite o minuto do evento (00:mm): ");
+                    scanf("%d",&novo->minuto);
+                    getchar();
+                }
+
              novo->ativo = 1;
             e[quant] = novo;
             quant++;
@@ -124,7 +139,7 @@ void alterar_evento(Agenda *e[], int quant){
 
     if(id >= 0 && id <quant){
         printf("\n\t--- Alteração de evento %d ---\n", id + 1);
-        printf("\n\tO que deseja alterar?\n\t1-Nome\n\t2-Descrição\n\t3-Data\n\t4-Todos\nDigite o número que deseja: ");
+        printf("\n\tO que deseja alterar?\n\t1-Nome\n\t2-Descrição\n\t3-Data\n\t4-Horario\n\t5-Todos\nDigite o número que deseja: ");
         scanf("%d", &editar);
         getchar();
       switch(editar){
@@ -174,6 +189,22 @@ void alterar_evento(Agenda *e[], int quant){
 
             break;
             case 4:
+                printf("\nDigite o horario do evento (00:00): ");
+                scanf("%d%d",&e[id]->hora,&e[id]->minuto);
+                getchar();
+
+                while(&e[id]->hora < 0 || &e[id]->hora > 23){
+                    printf("\nHorario inválido!! Digite o horario do evento (hh:00): ");
+                    scanf("%d",&e[id]->hora);
+                    getchar();
+                }
+                while(e[id]->minuto < 0 || e[id]->minuto > 59){
+                    printf("\nMinuto inválido!! Digite o minuto do evento (00:mm): ");
+                    scanf("%d",&e[id]->minuto);
+                    getchar();
+                }
+            break;
+            case 5:
                 printf("\nNovo nome do evento: ");
                 fgets(e[id]->evento,sizeof(e[id]->evento), stdin);
                 e[id]->evento[strcspn(e[id]->evento,"\n")] = '\0';
@@ -212,6 +243,20 @@ void alterar_evento(Agenda *e[], int quant){
                 while(e[id]->ano < 1000 || e[id]->ano > 9999){
                     printf("\nAno errado, por favor, digite o ano correta: ");
                     scanf("%d",&e[id]->ano);
+                    getchar();
+                }
+                printf("\nDigite o horario do evento (00:00): ");
+                scanf("%d%d",&e[id]->hora,&e[id]->minuto);
+                getchar();
+
+                while(&e[id]->hora < 0 || &e[id]->hora > 23){
+                    printf("\nHorario inválido!! Digite o horario do evento (hh:00): ");
+                    scanf("%d",&e[id]->hora);
+                    getchar();
+                }
+                while(e[id]->minuto < 0 || e[id]->minuto > 59){
+                    printf("\nMinuto inválido!! Digite o minuto do evento (00:mm): ");
+                    scanf("%d",&e[id]->minuto);
                     getchar();
                 }
             break;
