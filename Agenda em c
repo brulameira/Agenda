@@ -45,6 +45,287 @@ void imprimir(Agenda *e[], int quant){
     }
 
 }
+void pesquisar(Agenda *e[], int quant){
+    int opc,contmes =0, opc2, id;
+    char opcao;
+    printf("\n\t------ * * * PESQUISAR EVENTOS * * * -------\n");
+    printf("\n\t* * Deseja pesquisar por mês ou por ID? * *\n\n\t* * Digite M para mês ou I para ID: ");
+    scanf(" %c", &opcao);
+
+    if(opcao == 'M' || opcao == 'm'){
+        system("cls");
+        printf("\n\tDigite o mês do evento que deseja pesquisar: ");
+        scanf("%d",&opc);
+
+        while(opc < 1 || opc > 12){
+            printf("\n\tMes inválido!! Por favor, digite o mes correto: ");
+            scanf("%d",&opc);
+            getchar();
+        }
+
+        switch(opc){
+            case 1:
+                printf("\n\t\tLista de Eventos em Janeiro: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                 for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+               if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 2:
+               printf("\n\t\tLista de Eventos em Fevereiro: \n");
+               printf("\t---------------------------------------------------------------------------\n");
+                 for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 3:
+                printf("\n\t\tLista de Eventos em Março: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                 for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 4:
+                printf("\n\t\tLista de Eventos em Abril: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                 for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 5:
+                printf("\n\t\tLista de Eventos em Maio: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                 for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 6:
+
+                printf("\n\t\tLista de Eventos em Junho: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                 for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 7:
+
+                printf("\n\t\tLista de Eventos em Julho: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                 for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 8:
+
+                printf("\n\t\tLista de Eventos em Agosto: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                 for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 9:
+                printf("\n\t\tLista de Eventos em Setembro: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 10:
+                printf("\n\t\tLista de Eventos em Outubro: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 11:
+                printf("\n\t\tLista de Eventos em Novembro: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+            case 12:
+                printf("\n\t\tLista de Eventos em Dezembro: \n");
+                printf("\t---------------------------------------------------------------------------\n");
+                for(int i = 0; i < quant; i++){
+                    if(e[i]->mes == opc){
+                            contmes++;
+                            printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+                            printf("\t--------------------------------------------------------------------------\n");
+                    }
+                }
+                if(contmes == 0){
+                    printf("\tEventos encontrados: 0\n");
+
+                }else{
+                    printf("\tEventos encontrados: %d\n",contmes);
+
+                }
+
+            break;
+
+        }
+    }else{
+        system("cls");
+        printf("\n\t* * Digite o ID do evento: ");
+        scanf("%d", &id);
+        getchar();
+        id--;
+        int erro=0;
+        while(id< 0|| id >= quant || !e[id] || e[id]->ativo== 0){
+            printf("\n\tID inválido! Digite novamente: ");
+            scanf("%d", &id);
+            getchar();
+            id--;
+            erro++;
+            if( erro >= 4){
+                printf("\n\tID inválido! Tentivas excedidas!! \n");
+                return;
+
+            }
+        }
+        printf("\n\tEvento Encontrado \n");
+        printf("\t---------------------------------------------------------------------------\n");
+        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", id + 1, e[id]->dia, e[id]->mes, e[id]->ano,e[id]->hora,e[id]->minuto, e[id]->evento,e[id]->descricao);
+        printf("\t--------------------------------------------------------------------------\n");
+
+
+        }
+
+
+}
 
 int cadastrar_eventos(Agenda *e[], int quant){
 
@@ -148,18 +429,41 @@ int cadastrar_eventos(Agenda *e[], int quant){
 
 }
 void alterar_evento(Agenda *e[], int quant){
-    int id,editar;
+    int id,editar,erro=0;
+    char opc;
 
-    imprimir(e,quant);
+    printf("\n\tDeseja pesquisar o codigo do evento antes de alterar?\n\tDigite S para sim ou N para não: ");
+    scanf(" %c", &opc);
+    
+    while(opc != 's' && opc != 'S' && opc != 'n' && opc != 'N' ){
+        printf("\n\t!!ERRO!!Digite S para sim ou N para não: ");
+        scanf(" %c", &opc);
+        getchar();
+        
+    }
 
-    printf("\n\tDigite o codigo do evento que deseja alterar: \n");
+    if(opc == 'S' || opc == 's'){
+       pesquisar(e,quant);
+
+    }else{
+        printf("\n\tOk! Continue...\n");
+    }
+
+    printf("\n\tDigite o código do evento que deseja alterar: ");
     scanf("%d", &id);
     getchar();
     id--;
 
-    if(id< 0|| id >= quant || !e[id] || e[id]->ativo== 0){
-        printf("\n\tId inválido!!\n");
-        return;
+    while(id< 0|| id >= quant || !e[id] || e[id]->ativo== 0){
+        printf("\n\tID inválido! Digite novamente: ");
+        scanf("%d", &id);
+        getchar();
+        id--;
+        erro++;
+        if( erro >= 4){
+          printf("\n\tID inválido! Tentivas excedidas!! \n");
+          return;
+        }
     }
 
     if(id >= 0 && id <quant){
@@ -329,8 +633,22 @@ int ler_arquivo(Agenda *e[]){
 
 int excluir_evento(Agenda *e[], int quant){
     int id;
+    char opc;
 
-    imprimir(e,quant);
+    printf("\n\tDeseja pesquisar o codigo do evento antes de excluir?\n\tDigite S para sim ou N para não: ");
+    scanf(" %c", &opc);
+    while(opc != 's' && opc != 'S' && opc != 'n' && opc != 'N' ){
+        printf("\n\t!!ERRO!!Digite S para sim ou N para não: ");
+        scanf(" %c", &opc);
+        getchar();
+    }
+
+    if(opc == 'S' || opc == 's'){
+       pesquisar(e,quant);
+
+    }else{
+        printf("\n\tOk! Continue...\n");
+    }
 
     printf("\n\tDigite o codigo do evento que deseja excluir: ");
     scanf("%d", &id);
@@ -362,252 +680,7 @@ int excluir_evento(Agenda *e[], int quant){
     printf("\n\tEvento excluído com sucesso!\n");
     return quant;
 }
-void pesquisar(Agenda *e[], int quant){
-    int opc,contmes =0;
-    printf("\n\tDigite o mes do evento que deseja pesquisar: ");
-    scanf("%d",&opc);
 
-    while(opc < 1 || opc > 12){
-        printf("\n\tMes inválido!! Por favor, digite o mes correto: ");
-        scanf("%d",&opc);
-        getchar();
-    }
-    switch(opc){
-        case 1:
-            printf("\n\t\tLista de Eventos em Janeiro: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-             for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-           if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 2:
-           printf("\n\t\tLista de Eventos em Fevereiro: \n");
-           printf("\t---------------------------------------------------------------------------\n");
-             for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 3:
-            printf("\n\t\tLista de Eventos em Março: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-             for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 4:
-            printf("\n\t\tLista de Eventos em Abril: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-             for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 5:
-            printf("\n\t\tLista de Eventos em Maio: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-             for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 6:
-
-            printf("\n\t\tLista de Eventos em Junho: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-             for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 7:
-
-            printf("\n\t\tLista de Eventos em Julho: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-             for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 8:
-
-            printf("\n\t\tLista de Eventos em Agosto: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-             for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 9:
-            printf("\n\t\tLista de Eventos em Setembro: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-            for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 10:
-            printf("\n\t\tLista de Eventos em Outubro: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-            for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 11:
-            printf("\n\t\tLista de Eventos em Novembro: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-            for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-        case 12:
-            printf("\n\t\tLista de Eventos em Dezembro: \n");
-            printf("\t---------------------------------------------------------------------------\n");
-            for(int i = 0; i < quant; i++){
-                if(e[i]->mes == opc){
-                        contmes++;
-                        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
-                        printf("\t--------------------------------------------------------------------------\n");
-                }
-            }
-            if(contmes == 0){
-                printf("\tEventos encontrados: 0\n");
-
-            }else{
-                printf("\tEventos encontrados: %d\n",contmes);
-
-            }
-
-        break;
-    }
-
-
-}
 int main()
 {
     setlocale(LC_ALL, "pt_BR.UTF-8");
@@ -623,7 +696,7 @@ int main()
         switch(opcao){
             case 0:
                 system("cls");
-                printf("\n\tSaindo do programa...\n");
+                printf("\nSaindo do programa...\n");
             break;
             case 1:
                 system("cls");
