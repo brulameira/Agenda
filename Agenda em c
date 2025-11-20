@@ -40,7 +40,7 @@ void imprimir(Agenda *e[], int quant){
     printf("\t---------------------------------------------------------------------------\n");
 
     for(int i = 0; i < quant; i++){
-        printf("\tID: %d = Data: %02d/%02d/%04d\n\tHorario: %d:%d\n\tEvento: %s\n\tDescrição: %s\n", i + 1, e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto, e[i]->evento,e[i]->descricao);
+        printf("\tID: %d\n\tEvento: %s\n\tData: %02d/%02d/%04d\n\tHorario: %d:%d\n\tDescrição: %s\n", i + 1, e[i]->evento,e[i]->dia, e[i]->mes, e[i]->ano,e[i]->hora,e[i]->minuto,e[i]->descricao);
         printf("\t--------------------------------------------------------------------------\n");
     }
 
@@ -57,66 +57,63 @@ int cadastrar_eventos(Agenda *e[], int quant){
             return quant;
         }
             getchar();
-            printf("\nDigite o nome do evento: ");
+            printf("\n\tDigite o nome do evento: ");
             fgets(novo->evento,sizeof(novo->evento),stdin);
             novo->evento[strcspn(novo->evento, "\n")] = '\0';
 
-            printf("\nDigite a descrição do evento: ");
+            printf("\n\tDigite a descrição do evento: ");
             fgets(novo->descricao,sizeof(novo->descricao),stdin);
             novo->descricao[strcspn(novo->descricao, "\n")] = '\0';
 
-            printf("\nDigite o horario do evento (00:00): ");
+            printf("\n\tDigite o horario do evento (00:00): ");
             scanf("%d%d",&novo->hora,&novo->minuto);
             getchar();
 
             while(novo->hora < 0 || novo->hora > 23){
-                printf("\nHorario inválido!! Digite o horario do evento (hh:00): ");
+                printf("\n\tHorario inválido!! Digite o horario do evento (hh:00): ");
                 scanf("%d",&novo->hora);
                 getchar();
             }
             while(novo->minuto < 0 || novo->minuto > 59){
-                printf("\nMinuto inválido!! Digite o minuto do evento (00:mm): ");
+                printf("\n\tMinuto inválido!! Digite o minuto do evento (00:mm): ");
                 scanf("%d",&novo->minuto);
                 getchar();
             }
 
-            printf("\nDigite a data do evento (dia mes ano): ");
+            printf("\n\tDigite a data do evento (dia mes ano): ");
             scanf("%d%d%d",&novo->dia,&novo->mes,&novo->ano);
             getchar();
 
             while(novo->mes < 1 || novo->mes > 12){
-                printf("\nMes errado, por favor, digite o mes correta: ");
+                printf("\n\tMes errado, por favor, digite o mes correta: ");
                 scanf("%d",&novo->mes);
                 getchar();
             }
             if( novo->mes == 1 || novo->mes == 3 || novo->mes == 5 || novo->mes == 7 || novo->mes == 8 || novo->mes == 11 || novo->mes == 12 ){
                     while( novo->dia < 1 || novo->dia > 31){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&novo->dia);
                         getchar();
                     }
                 }else if( novo->mes == 4 || novo->mes == 6 || novo->mes == 9 || novo->mes == 11){
                     while( novo->dia < 1 || novo->dia > 30){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&novo->dia);
                         getchar();
                     }
                 }else{
                     while( novo->dia < 1 || novo->dia > 29){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&novo->dia);
                         getchar();
                     }
                 }
                 while(novo->ano < 1000 || novo->ano > 9999){
-                    printf("\nAno errado, por favor, digite o ano correta: ");
+                    printf("\n\tAno errado, por favor, digite o ano correta: ");
                     scanf("%d",&novo->ano);
                     getchar();
                 }
-
-
-
-             novo->ativo = 1;
+            novo->ativo = 1;
             e[quant] = novo;
             quant++;
 
@@ -135,7 +132,7 @@ void alterar_evento(Agenda *e[], int quant){
     id--;
 
     if(id< 0|| id >= quant || !e[id] || e[id]->ativo== 0){
-        printf("Id inválido!!\n");
+        printf("\n\tId inválido!!\n");
         return;
     }
 
@@ -146,113 +143,113 @@ void alterar_evento(Agenda *e[], int quant){
         getchar();
       switch(editar){
             case 1:
-                printf("\nNovo nome do evento: ");
+                printf("\n\tNovo nome do evento: ");
                 fgets(e[id]->evento,sizeof(e[id]->evento), stdin);
                 e[id]->evento[strcspn(e[id]->evento,"\n")] = '\0';
             break;
             case 2:
-                printf("\nNova descrição: ");
+                printf("\n\tNova descrição: ");
                 fgets(e[id]->descricao,sizeof(e[id]->descricao), stdin);
                 e[id]->descricao[strcspn(e[id]->descricao,"\n")] = '\0';
             break;
             case 3:
-                printf("\nNova data (dd/mm/aaaa): ");
+                printf("\n\tNova data (dd/mm/aaaa): ");
                 scanf("%d%d%d",&e[id]->dia,&e[id]->mes,&e[id]->ano);
 
             while(e[id]->mes < 1 || e[id]->mes > 12){
-                printf("\nMes errado, por favor, digite o mes correta: ");
+                printf("\n\tMes errado, por favor, digite o mes correta: ");
                 scanf("%d",&e[id]->mes);
                 getchar();
             }
             if( e[id]->mes == 1 || e[id]->mes == 3 || e[id]->mes == 5 || e[id]->mes == 7 || e[id]->mes == 8 || e[id]->mes == 11 || e[id]->mes == 12 ){
                     while( e[id]->dia < 1 || e[id]->dia > 31){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&e[id]->dia);
                         getchar();
                     }
                 }else if( e[id]->mes == 4 || e[id]->mes == 6 || e[id]->mes == 9 || e[id]->mes == 11){
                     while( e[id]->dia < 1 || e[id]->dia > 30){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&e[id]->dia);
                         getchar();
                     }
                 }else{
                     while( e[id]->dia < 1 || e[id]->dia > 29){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&e[id]->dia);
                         getchar();
                     }
                 }
                 while(e[id]->ano < 1000 || e[id]->ano > 9999){
-                    printf("\nAno errado, por favor, digite o ano correta: ");
+                    printf("\n\tAno errado, por favor, digite o ano correta: ");
                     scanf("%d",&e[id]->ano);
                     getchar();
                 }
 
             break;
             case 4:
-                printf("\nDigite o horario do evento (00:00): ");
+                printf("\n\tDigite o horario do evento (00:00): ");
                 scanf("%d%d",&e[id]->hora,&e[id]->minuto);
                 getchar();
 
                 while(&e[id]->hora < 0 || &e[id]->hora > 23){
-                    printf("\nHorario inválido!! Digite o horario do evento (hh:00): ");
+                    printf("\n\tHorario inválido!! Digite o horario do evento (hh:00): ");
                     scanf("%d",&e[id]->hora);
                     getchar();
                 }
                 while(e[id]->minuto < 0 || e[id]->minuto > 59){
-                    printf("\nMinuto inválido!! Digite o minuto do evento (00:mm): ");
+                    printf("\n\tMinuto inválido!! Digite o minuto do evento (00:mm): ");
                     scanf("%d",&e[id]->minuto);
                     getchar();
                 }
             break;
             case 5:
-                printf("\nNovo nome do evento: ");
+                printf("\n\tNovo nome do evento: ");
                 fgets(e[id]->evento,sizeof(e[id]->evento), stdin);
                 e[id]->evento[strcspn(e[id]->evento,"\n")] = '\0';
 
-                printf("\nNova descrição: ");
+                printf("\n\tNova descrição: ");
                 fgets(e[id]->descricao,sizeof(e[id]->descricao), stdin);
                 e[id]->descricao[strcspn(e[id]->descricao,"\n")] = '\0';
 
-                printf("\nNova data (dd/mm/aaaa): ");
+                printf("\n\tNova data (dd/mm/aaaa): ");
                 scanf("%d%d%d",&e[id]->dia,&e[id]->mes,&e[id]->ano);
 
                 while(e[id]->mes < 1 || e[id]->mes > 12){
-                    printf("\nMes errado, por favor, digite o mes correto: ");
+                    printf("\n\tMes errado, por favor, digite o mes correto: ");
                     scanf("%d",&e[id]->mes);
                     getchar();
             }
             if( e[id]->mes == 1 || e[id]->mes == 3 || e[id]->mes == 5 || e[id]->mes == 7 || e[id]->mes == 8 || e[id]->mes == 11 || e[id]->mes == 12 ){
                     while( e[id]->dia < 1 || e[id]->dia > 31){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&e[id]->dia);
                         getchar();
                     }
                 }else if( e[id]->mes == 4 || e[id]->mes == 6 || e[id]->mes == 9 || e[id]->mes == 11){
                     while( e[id]->dia < 1 || e[id]->dia > 30){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&e[id]->dia);
                         getchar();
                     }
                 }else{
                     while( e[id]->dia < 1 || e[id]->dia > 29){
-                        printf("\nData errada, por favor, digite a data correta: ");
+                        printf("\n\tData errada, por favor, digite a data correta: ");
                         scanf("%d",&e[id]->dia);
                         getchar();
                     }
                 }
                 while(e[id]->ano < 1000 || e[id]->ano > 9999){
-                    printf("\nAno errado, por favor, digite o ano correta: ");
+                    printf("\n\tAno errado, por favor, digite o ano correta: ");
                     scanf("%d",&e[id]->ano);
                     getchar();
                 }
-                printf("\nDigite o horario do evento (00:00): ");
+                printf("\n\tDigite o horario do evento (00:00): ");
                 scanf("%d%d",&e[id]->hora,&e[id]->minuto);
                 getchar();
 
                 while(&e[id]->hora < 0 || &e[id]->hora > 23){
-                    printf("\nHorario inválido!! Digite o horario do evento (hh:00): ");
+                    printf("\n\tHorario inválido!! Digite o horario do evento (hh:00): ");
                     scanf("%d",&e[id]->hora);
                     getchar();
                 }
@@ -272,7 +269,7 @@ void alterar_evento(Agenda *e[], int quant){
         return;
     }
     salvar(e, quant);
-    printf("Evento atualizado!\n");
+    printf("\n\tEvento atualizado!\n");
 }
 
 
@@ -299,14 +296,8 @@ int ler_arquivo(Agenda *e[]){
 
             novo->ativo = 1;
             e[i] = novo;
-
-
-
         }
-        fclose(file);
-
-
-
+    fclose(file);
     return quant;
 }
 
@@ -315,13 +306,13 @@ int excluir_evento(Agenda *e[], int quant){
 
     imprimir(e,quant);
 
-    printf("\n\tDigite o codigo do evento que deseja excluir: \n");
+    printf("\n\tDigite o codigo do evento que deseja excluir: ");
     scanf("%d", &id);
     getchar();
     id--;
 
      if (id < 0 || id >= quant || !e[id] || e[id]->ativo == 0) {
-        printf("ID inválido!\n");
+        printf("\n\tID inválido!\n");
         return quant;
     }
 
@@ -342,16 +333,16 @@ int excluir_evento(Agenda *e[], int quant){
         }
     }
 
-    printf("Evento excluído com sucesso!\n");
+    printf("\n\tEvento excluído com sucesso!\n");
     return quant;
 }
 void pesquisar(Agenda *e[], int quant){
     int opc,contmes =0;
-    printf("Escolha o mes do evento que deseja: ");
+    printf("\n\tDigite o mes do evento que deseja pesquisar: ");
     scanf("%d",&opc);
 
     while(opc < 1 || opc > 12){
-        printf("\nMes errado, por favor, digite o mes correto: ");
+        printf("\n\tMes inválido!! Por favor, digite o mes correto: ");
         scanf("%d",&opc);
         getchar();
     }
@@ -366,14 +357,13 @@ void pesquisar(Agenda *e[], int quant){
                         printf("\t--------------------------------------------------------------------------\n");
                 }
             }
-            if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
-            }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
-            }
+           if(contmes == 0){
+                printf("\tEventos encontrados: 0\n");
 
+            }else{
+                printf("\tEventos encontrados: %d\n",contmes);
+
+            }
 
         break;
         case 2:
@@ -387,11 +377,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -406,11 +396,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -425,11 +415,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -444,11 +434,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -464,11 +454,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -484,11 +474,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -504,11 +494,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -523,11 +513,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -542,11 +532,11 @@ void pesquisar(Agenda *e[], int quant){
                 }
             }
             if(contmes == 0){
-                printf("Eventos encontrados: 0");
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: 0\n");
+
             }else{
-                printf("Eventos encontrados: %d",contmes);
-                printf("\t--------------------------------------------------------------------------\n");
+                printf("\tEventos encontrados: %d\n",contmes);
+
             }
 
         break;
@@ -594,7 +584,8 @@ void pesquisar(Agenda *e[], int quant){
 }
 int main()
 {
-    setlocale(LC_ALL, "Portuguese");
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+    system("chcp 65001 > nul");
     Agenda *eventos[MAX_EVENTOS] ={0};
     int opcao, quant = ler_arquivo(eventos),erro;
 
@@ -606,7 +597,7 @@ int main()
         switch(opcao){
             case 0:
                 system("cls");
-                printf("\nSaindo do programa...\n");
+                printf("\n\tSaindo do programa...\n");
             break;
             case 1:
                 system("cls");
