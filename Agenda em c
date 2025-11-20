@@ -61,6 +61,32 @@ int cadastrar_eventos(Agenda *e[], int quant){
             fgets(novo->evento,sizeof(novo->evento),stdin);
             novo->evento[strcspn(novo->evento, "\n")] = '\0';
 
+            for(int i = 0; i < quant; i++){
+                char opc;
+                if(strcmp(e[i]->evento, novo->evento) == 0){
+                    printf("\n\t!!ERRO!! Já existe um evento com esse nome!\n");
+                    printf("\n\tDeseja continuar o cadastro mesmo assim?\n\tDigite S para sim ou N para não: ");
+                    scanf(" %c", &opc);
+                    getchar();
+                    while(opc != 's' && opc != 'S' && opc != 'n' && opc != 'N' ){
+                        printf("\n\t!!ERRO!!Digite S para sim ou N para não: ");
+                        scanf(" %c", &opc);
+                        getchar();
+                    }
+
+                    if(opc == 'N' || opc == 'n'){
+                        free(novo);
+                        printf("\n\tCadastro Cancelado!!\n");
+                        return quant;
+
+                    }else{
+                        printf("\n\tOk! Continue cadastrando.\n");
+                        break;
+                    }
+
+                }
+            }
+
             printf("\n\tDigite a descrição do evento: ");
             fgets(novo->descricao,sizeof(novo->descricao),stdin);
             novo->descricao[strcspn(novo->descricao, "\n")] = '\0';
